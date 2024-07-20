@@ -43,11 +43,11 @@ while '_' in sonuc:
 	else:
 		kalan -= 1
 		if kalan == 0:
-			print('Kaybettiniz. Cümle "{a}" idi.'.format(a = cumle))
+			print('Kaybettiniz. Cümle "{}" idi.'.format(cumle))
 			break
 		else:
-			mesaj = 'Girdiğiniz harf cümlede bulunmuyor. {b} hakkınız kaldı.'
-			print(mesaj.format(b = kalan))
+			mesaj = 'Girdiğiniz harf cümlede bulunmuyor. {} hakkınız kaldı.'
+			print(mesaj.format(kalan)
 
 if '_' not in sonuc:
 	print('Cümleyi bildiniz!')

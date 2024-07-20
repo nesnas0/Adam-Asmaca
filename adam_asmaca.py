@@ -9,7 +9,18 @@ def yer(x, y):
 		artır += 1
 	return liste
 
-cumle = ''
+cumle = 'selam ben'
+
+def yer2(y):
+	liste = []
+	artır = 0
+	a = cumle.split(' ')
+	while y in a:
+		liste.append(a.index(y) + artır)
+		a.remove(a[a.index(y)])
+		artır += 1
+
+	return liste
 
 kalan = 5
 
@@ -30,24 +41,42 @@ while '_' in sonuc:
 	tahmin = input('Bir harf giriniz: ')
 	print('')
 
-	if tahmin in cumle:
-		print('Doğru tahmin!')
+	if len(tahmin)==1:
+		if tahmin in cumle:
+			print('Doğru tahmin!')
 
-		for a in yer(cumle, tahmin):
-			sonuc = list(sonuc)
-			sonuc[a] = tahmin
-			sonuc = ''.join(sonuc)
-		
-		print('Cümle: ', sonuc)
-		print('')
-	else:
-		kalan -= 1
-		if kalan == 0:
-			print('Kaybettiniz. Cümle "{}" idi.'.format(cumle))
-			break
+			for a in yer(cumle, tahmin):
+				sonuc = list(sonuc)
+				sonuc[a] = tahmin
+				sonuc = ''.join(sonuc)
+			
+			print('Cümle: ', sonuc)
+			print('')
 		else:
-			mesaj = 'Girdiğiniz harf cümlede bulunmuyor. {} hakkınız kaldı.'
-			print(mesaj.format(kalan)
-
+			kalan -= 1
+			if kalan == 0:
+				print('Kaybettiniz. Cümle "{a}" idi.'.format(a = cumle))
+				break
+			else:
+				mesaj = 'Girdiğiniz harf cümlede bulunmuyor. {b} hakkınız kaldı.'
+				print(mesaj.format(b = kalan))
+	else:
+		if tahmin in cumle.split(' '):
+			print('Doğru tahmin!')
+			sonuc = sonuc.split(' ')
+			for a in yer2(tahmin):
+				sonuc[a] = tahmin
+			sonuc = ' '.join(sonuc)
+			print('Cümle: ', sonuc)
+			print('')
+		else:
+			kalan -= 1
+			if kalan == 0:
+				print('Kaybettiniz. Cümle "{a}" idi.'.format(a = cumle))
+				break
+			else:
+				mesaj = 'Girdiğiniz kelime cümlede bulunmuyor. {b} hakkınız kaldı.'
+				print(mesaj.format(b = kalan))			
+  
 if '_' not in sonuc:
 	print('Cümleyi bildiniz!')
